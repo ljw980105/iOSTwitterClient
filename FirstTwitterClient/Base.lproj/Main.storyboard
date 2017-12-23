@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZBA-0E-QKq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tweet Shower View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="3qz-a7-rmw">
+            <objects>
+                <tabBarController id="ZBA-0E-QKq" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qqg-j3-WlO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="R31-pK-f9o"/>
+                        <segue destination="GNc-Qt-wT9" kind="relationship" relationship="viewControllers" id="aGO-b4-n93"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBP-0q-lm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1941" y="-142"/>
+        </scene>
+        <!--Tweets-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TweetShowerViewController" customModule="FirstTwitterClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,7 +44,7 @@
                                 <state key="normal" title="Show Tweets"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o25-dy-aUC">
-                                <rect key="frame" x="102" y="149" width="170" height="21"/>
+                                <rect key="frame" x="35" y="149" width="305" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -46,6 +64,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Tweets" image="ticon1.png" selectedImage="ticon1.png" id="HJ3-a7-3Ce"/>
                     <connections>
                         <outlet property="showTweetButton" destination="BDu-Kk-Yml" id="bK9-o1-uWa"/>
                         <outlet property="tweetField" destination="o25-dy-aUC" id="1AG-kx-pbd"/>
@@ -53,7 +72,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+            <point key="canvasLocation" x="-1030" y="-414"/>
+        </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="x6a-j1-ZHz">
+            <objects>
+                <tableViewController id="Pc1-ep-3cI" customClass="TimelineViewController" customModule="FirstTwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cT7-xD-PdM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="e6m-ny-BsN">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e6m-ny-BsN" id="LRt-Tl-PvN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Pc1-ep-3cI" id="iOz-X1-XB4"/>
+                            <outlet property="delegate" destination="Pc1-ep-3cI" id="2aa-KJ-YPu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="CNy-lk-ei9"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CC-Xa-FUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-287" y="287"/>
+        </scene>
+        <!--Timeline-->
+        <scene sceneID="udS-Vy-Amn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GNc-Qt-wT9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Timeline" image="ticon2.png" selectedImage="ticon2.png" id="jwQ-yG-dad"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Sy-MG-FLi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pc1-ep-3cI" kind="relationship" relationship="rootViewController" id="Y9V-0d-chv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="56Q-n7-I69" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1022.4" y="287.85607196401799"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ticon1.png" width="30" height="30"/>
+        <image name="ticon2.png" width="30" height="30"/>
+    </resources>
 </document>

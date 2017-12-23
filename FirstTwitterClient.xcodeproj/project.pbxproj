@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042CA22F1FEDF44F000F50FA /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CA22E1FEDF44F000F50FA /* TimelineViewController.swift */; };
+		042CA2311FEE089B000F50FA /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 042CA2301FEE089B000F50FA /* TwitterKitResources.bundle */; };
+		042CA23B1FEE0D56000F50FA /* ticon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 042CA2391FEE0D56000F50FA /* ticon1.png */; };
+		042CA23C1FEE0D56000F50FA /* ticon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 042CA23A1FEE0D56000F50FA /* ticon2.png */; };
 		044441891FEB750400F49EAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044441881FEB750400F49EAD /* AppDelegate.swift */; };
 		0444418B1FEB750400F49EAD /* TweetShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444418A1FEB750400F49EAD /* TweetShowerViewController.swift */; };
 		0444418E1FEB750400F49EAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0444418C1FEB750400F49EAD /* Main.storyboard */; };
@@ -29,6 +33,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		042CA22E1FEDF44F000F50FA /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		042CA2301FEE089B000F50FA /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = Pods/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		042CA2391FEE0D56000F50FA /* ticon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ticon1.png; path = Assets.xcassets/ticon1.png; sourceTree = "<group>"; };
+		042CA23A1FEE0D56000F50FA /* ticon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ticon2.png; path = Assets.xcassets/ticon2.png; sourceTree = "<group>"; };
 		044441851FEB750400F49EAD /* FirstTwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstTwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		044441881FEB750400F49EAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0444418A1FEB750400F49EAD /* TweetShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetShowerViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +72,7 @@
 		0444417C1FEB750400F49EAD = {
 			isa = PBXGroup;
 			children = (
+				042CA2301FEE089B000F50FA /* TwitterKitResources.bundle */,
 				044441871FEB750400F49EAD /* FirstTwitterClient */,
 				044441861FEB750400F49EAD /* Products */,
 				0443E2561FEB779800800E72 /* Frameworks */,
@@ -86,8 +95,11 @@
 				0444418A1FEB750400F49EAD /* TweetShowerViewController.swift */,
 				0444418C1FEB750400F49EAD /* Main.storyboard */,
 				0444418F1FEB750400F49EAD /* Assets.xcassets */,
+				042CA2391FEE0D56000F50FA /* ticon1.png */,
+				042CA23A1FEE0D56000F50FA /* ticon2.png */,
 				044441911FEB750400F49EAD /* LaunchScreen.storyboard */,
 				044441941FEB750400F49EAD /* Info.plist */,
+				042CA22E1FEDF44F000F50FA /* TimelineViewController.swift */,
 			);
 			path = FirstTwitterClient;
 			sourceTree = "<group>";
@@ -167,6 +179,9 @@
 				044441931FEB750400F49EAD /* LaunchScreen.storyboard in Resources */,
 				044441901FEB750400F49EAD /* Assets.xcassets in Resources */,
 				0444418E1FEB750400F49EAD /* Main.storyboard in Resources */,
+				042CA2311FEE089B000F50FA /* TwitterKitResources.bundle in Resources */,
+				042CA23C1FEE0D56000F50FA /* ticon2.png in Resources */,
+				042CA23B1FEE0D56000F50FA /* ticon1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +254,7 @@
 			files = (
 				0444418B1FEB750400F49EAD /* TweetShowerViewController.swift in Sources */,
 				044441891FEB750400F49EAD /* AppDelegate.swift in Sources */,
+				042CA22F1FEDF44F000F50FA /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

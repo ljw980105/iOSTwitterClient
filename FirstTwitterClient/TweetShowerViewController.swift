@@ -10,33 +10,55 @@ import UIKit
 import TwitterKit
 
 class TweetShowerViewController: UIViewController {
-    let client = TWTRAPIClient() // generates a twitter client
     
     @IBOutlet weak var showTweetButton: UIButton!
     @IBOutlet weak var tweetField: UILabel!
     //var tweetView: TWTRTweetView
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
     func showTweets() -> Void {
-        client.loadTweet(withID: "20") { (tweet, error) -> Void in
-            //print(tweet?.author.formattedScreenName)
-//            self.tweetField?.text = tweet?.author.formattedScreenName
-//            print(error!.localizedDescription)
-            
-            if tweet != nil {
-                self.tweetField.text = tweet?.text
-                //self.tweetView.configure(with: tweet)
+        let client = TWTRAPIClient() // generates a twitter client
+//        client.loadTweet(withID: "921872668223332352") { tweet, error in
+//            if tweet != nil{
+//                //let tweetView = TWTRTweetView(tweet: t)
+//                self.tweetField.text = tweet?.text
+//                //self.tweetView.configure(with: tweet)
+//            } else {
+//                print("Failed to load Tweet:" + (error?.localizedDescription)!)
+//            }
+//        }
+        client.loadUser(withID: "1250167489") { user, error in
+            if user != nil {
+                self.tweetField.text = user?.screenName
             } else {
-                print("Failed to load Tweet:" + (error?.localizedDescription)!)
+                if error == nil{
+                    print ("no error")
+                } else{
+                    print(error!)
+                }
             }
         }
     }
 
     @IBAction func showTweetAction(_ sender: UIButton) {
-        tweetField.text = "Button Pressed"
         showTweets()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    func loadSingleTweet(with identifier:String) -> Void{
+        TWTRAPIClient().loadTweet(withID: identifier) { tweet, error in
+        if let t = tweet {
+            let tweetView = TWTRTweetView(tweet: t)
+            tweetView.center = self.view.center
+            self.tweetField.text = tweet?.text
+            self.view.addSubview(tweetView)
+        } else {
+            print("Failed to load Tweet: \(error)")
+        }
+        }
     }
 
     override func didReceiveMemoryWarning() {
