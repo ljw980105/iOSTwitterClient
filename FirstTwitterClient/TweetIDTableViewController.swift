@@ -12,9 +12,13 @@ import TwitterKit
 class TweetIDTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var TweetIDField: UITextField!
+    var tweetContents:[String] = []
+    var tweetUsers: [String] = []
     
     var tweetIDs: String = "" {
         didSet{
+            tweetUsers.removeAll()
+            tweetContents.removeAll()
             tweets = tweetIDs.components(separatedBy: " ") // separate strings into arrays with " "
         }
     }
@@ -57,14 +61,16 @@ class TweetIDTableViewController: UITableViewController, UITextFieldDelegate {
         client.loadTweet(withID: tweets[indexPath.row]) { tweet, error in
             if tweet != nil {
                 if let tweetCell = cell as? TweetTableViewCell{
-                    tweetCell.updateUI(tweeterName: (tweet?.author.name)!, tweeterScreenName: "@" + (tweet?.author.screenName)!, tweetContent: (tweet?.text)!, imageURL: (tweet?.author.profileImageURL)!)
+                    let tName = (tweet?.author.name)!
+                    let tSName = "@" + (tweet?.author.screenName)!
+                    let tContent = (tweet?.text)!
+                    let tImgURL = (tweet?.author.profileImageURL)!
+                    tweetCell.updateUI(tweeterName: tName, tweeterScreenName: tSName, tweetContent: tContent, imageURL: tImgURL)
+                    self.tweetUsers.append(tSName)
+                    self.tweetContents.append(tImgURL + " " + tContent)
                 }
             } else {
-                if error == nil{
-                    print ("no error")
-                } else{
-                    print(error!)
-                }
+                print (error!)
             }
         }
         return cell
@@ -76,5 +82,38 @@ class TweetIDTableViewController: UITableViewController, UITextFieldDelegate {
             tweetIDs = TweetIDField.text!
         }
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destinationViewController = segue.destination
+        if let navigationViewController = destinationViewController as? UINavigationController {
+            destinationViewController = navigationViewController.visibleViewController ?? destinationViewController
+        }
+        if let dest = destinationViewController as? DestTableViewController{
+            if let indexPath = tableView.indexPathForSelectedRow{
+                dest.navigationItem.title = tweets[indexPath.row]
+                dest.tweetIdentifier = tweets[indexPath.row]
+                
+                var validContents: [[String]] = []
+                for _ in 0...4{ // generate an length-4 array loaded with empty arrays
+                    validContents.append([])
+                }
+                // add current user into the data structure
+                validContents[3].append(tweetUsers[indexPath.row])
+                // separate tweets into words separated by spaces, storing each word in the array
+                let contentsArr = tweetContents[indexPath.row].components(separatedBy: " ")
+                validContents[0].append(contentsArr[0])// get the image url
+                var counts = 0
+                for item in contentsArr{
+                    if counts > 0 {
+                        if item.hasPrefix("http") { validContents[1].append(item) }
+                        if item.hasPrefix("#") { validContents[2].append(item) }
+                        if item.hasPrefix("@") { validContents[3].append(item) }
+                    }
+                    counts += 1
+                }
+                dest.destContents = validContents
+            }
+        }
     }
 }
