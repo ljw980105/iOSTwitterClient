@@ -54,5 +54,53 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>ScreenName</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>ScreenName</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Search for ScreenName</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenScreenname</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>version</key>
+				<string>${APP_VERSION}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Anything</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Anything</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Search Anything</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenSearch</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>version</key>
+				<string>${APP_VERSION}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>TweetID</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>TweetID</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Search TweetIDs</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenTweetID</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>version</key>
+				<string>${APP_VERSION}</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

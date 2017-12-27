@@ -19,6 +19,8 @@ class TimelineViewController: TWTRTimelineViewController, TWTRTweetViewDelegate,
             } 
             self.dataSource = TWTRUserTimelineDataSource(screenName: searchText, apiClient: TWTRAPIClient())
             self.title = "@" + searchText
+            checkExistence()
+            storeDefaults(using: "@" + searchText)
             self.showTweetActions = true
         }
     }

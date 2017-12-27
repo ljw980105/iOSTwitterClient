@@ -19,6 +19,8 @@ class SearchTableViewController: TWTRTimelineViewController, TWTRTweetViewDelega
             }
             self.dataSource = TWTRSearchTimelineDataSource(searchQuery: searchText,apiClient: TWTRAPIClient())
             self.title = searchText
+            checkExistence()
+            storeDefaults(using: searchText)
         }
     }
     

@@ -20,6 +20,8 @@ class TweetIDTableViewController: UITableViewController, UITextFieldDelegate {
             tweetUsers.removeAll()
             tweetContents.removeAll()
             tweets = tweetIDs.components(separatedBy: " ") // separate strings into arrays with " "
+            checkExistence()
+            storeDefaults(using: tweetIDs)
         }
     }
     
@@ -27,6 +29,8 @@ class TweetIDTableViewController: UITableViewController, UITextFieldDelegate {
     var tweets: [String] = ["918697712597340160","945049058917445633","940703861391675392"] {
         didSet{
             tableView.reloadData() // hammer: large performance costs
+            
+            checkExistence()
         }
     }
     
@@ -65,9 +69,10 @@ class TweetIDTableViewController: UITableViewController, UITextFieldDelegate {
                     let tSName = "@" + (tweet?.author.screenName)!
                     let tContent = (tweet?.text)!
                     let tImgURL = (tweet?.author.profileImageURL)!
+                    let tLargeImgURL = (tweet?.author.profileImageLargeURL)!
                     tweetCell.updateUI(tweeterName: tName, tweeterScreenName: tSName, tweetContent: tContent, imageURL: tImgURL)
                     self.tweetUsers.append(tSName)
-                    self.tweetContents.append(tImgURL + " " + tContent)
+                    self.tweetContents.append(tLargeImgURL + " " + tContent)
                 }
             } else {
                 print (error!)

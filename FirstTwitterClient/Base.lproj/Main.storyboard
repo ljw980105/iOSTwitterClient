@@ -25,11 +25,12 @@
                         <segue destination="ZG5-sA-ydy" kind="relationship" relationship="viewControllers" id="UmI-rb-rGg"/>
                         <segue destination="NfH-qn-eZk" kind="relationship" relationship="viewControllers" id="EcK-F2-G4l"/>
                         <segue destination="imT-Ml-ZDI" kind="relationship" relationship="viewControllers" id="gRm-Ff-vGp"/>
+                        <segue destination="lij-cU-y83" kind="relationship" relationship="viewControllers" id="PFT-Gz-sDD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBP-0q-lm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2391" y="466"/>
+            <point key="canvasLocation" x="-2164" y="530"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="x6a-j1-ZHz">
@@ -157,6 +158,41 @@
             </objects>
             <point key="canvasLocation" x="-1032" y="1054.2728635682161"/>
         </scene>
+        <!--History Table View Controller-->
+        <scene sceneID="4eV-5S-FOA">
+            <objects>
+                <tableViewController id="Y27-lC-wkO" customClass="HistoryTableViewController" customModule="FirstTwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1V7-Nm-8d0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hist" id="kXc-tI-k9W">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kXc-tI-k9W" id="Nfn-YM-Xbd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Y27-lC-wkO" id="FHc-k0-sxA"/>
+                            <outlet property="delegate" destination="Y27-lC-wkO" id="8pB-Tn-B0B"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="7rE-aC-JSk"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="8ot-I2-tuE">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshControl:" destination="Y27-lC-wkO" eventType="valueChanged" id="Xil-TM-deC"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ptV-Y5-4A0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-298" y="1793"/>
+        </scene>
         <!--TweetID Table View Controller-->
         <scene sceneID="N14-SP-jfv">
             <objects>
@@ -282,7 +318,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hw" id="Lbq-C9-Sak">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -291,6 +326,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="img" rowHeight="205" id="csW-f0-EWP" customClass="TweetIDImageTableViewCell" customModule="FirstTwitterClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="205"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="csW-f0-EWP" id="YbH-Oa-UlR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="204.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oBJ-To-2be">
+                                            <rect key="frame" x="120" y="11" width="135" height="183"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="oBJ-To-2be" secondAttribute="bottom" constant="10.5" id="6kk-Nb-mcT"/>
+                                        <constraint firstItem="oBJ-To-2be" firstAttribute="leading" secondItem="YbH-Oa-UlR" secondAttribute="leading" constant="120" id="Lyl-eH-rXD"/>
+                                        <constraint firstAttribute="trailing" secondItem="oBJ-To-2be" secondAttribute="trailing" constant="120" id="cCR-tO-x1F"/>
+                                        <constraint firstItem="oBJ-To-2be" firstAttribute="top" secondItem="YbH-Oa-UlR" secondAttribute="top" constant="11" id="iHS-0G-SLk"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="TweetIDImage" destination="oBJ-To-2be" id="ESt-HG-7dk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -303,10 +360,34 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xea-bz-LJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439" y="-424"/>
+            <point key="canvasLocation" x="437.60000000000002" y="-424.13793103448279"/>
+        </scene>
+        <!--HIstory-->
+        <scene sceneID="JkI-hF-bCZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lij-cU-y83" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="HIstory" image="histIcon.png" id="2jv-rh-VwC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cq0-MH-HOW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y27-lC-wkO" kind="relationship" relationship="rootViewController" id="kCb-39-Hki"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swU-Yh-a0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1038.4000000000001" y="1793.7031484257873"/>
         </scene>
     </scenes>
     <resources>
+        <image name="histIcon.png" width="30" height="30"/>
         <image name="searchIcon.png" width="30" height="30"/>
         <image name="ticon1.png" width="30" height="30"/>
         <image name="ticon2.png" width="30" height="30"/>

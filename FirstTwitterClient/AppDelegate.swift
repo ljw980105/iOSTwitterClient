@@ -21,6 +21,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITextField.appearance().keyboardAppearance = .dark
         return true
     }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(shouldPerformActionFor(shortcutItem: shortcutItem))
+    }
+    
+    private func shouldPerformActionFor(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = ShortcutIdentifier(identifier: shortcutType) else {
+            return false
+        }
+        return selectTabBarItemFor(shortcutIdentifier: shortcutIdentifier)
+    }
+    
+    enum ShortcutIdentifier: String {
+        case OpenScreenname
+        case OpenSearch
+        case OpenTweetID
+        
+        init?(identifier: String) {
+            guard let shortIdentifier = identifier.components(separatedBy: ".").last else {
+                return nil
+            }
+            self.init(rawValue: shortIdentifier)
+        }
+    }
+    
+    private func selectTabBarItemFor(shortcutIdentifier: ShortcutIdentifier) -> Bool {
+        guard let myTabBar = self.window?.rootViewController as? UITabBarController else {
+            return false
+        }
+        switch shortcutIdentifier {
+        case .OpenScreenname:
+            myTabBar.selectedIndex = 0
+            return true
+        case .OpenSearch:
+            myTabBar.selectedIndex = 1
+            return true
+        case .OpenTweetID:
+            myTabBar.selectedIndex = 2
+            return true
+        }
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
