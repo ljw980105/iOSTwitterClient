@@ -12,6 +12,8 @@ class HistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
 
         self.title = "History"
     }
@@ -46,4 +48,13 @@ class HistoryTableViewController: UITableViewController {
         cell.textLabel?.text = retrieveDefaults()[indexPath.row]
         return cell
     }
+    
+    // delete a row: remove from data structure and the view
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            deleteDefaultsElements(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+ 
 }

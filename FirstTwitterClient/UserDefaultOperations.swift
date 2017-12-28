@@ -29,3 +29,9 @@ func retrieveDefaults() -> [String] {
     }
     return UserDefaults.standard.stringArray(forKey: "defaults")!
 }
+
+func deleteDefaultsElements(at row:Int){
+    var defaults = UserDefaults.standard.stringArray(forKey: "defaults")!
+    defaults.remove(at: row)
+    UserDefaults.standard.set(defaults, forKey: "defaults")
+}
